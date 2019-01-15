@@ -1,3 +1,7 @@
+#!/usr/bin/env node
+'use strict';
+var program = require('commander');
+
 var ovh = require('ovh')({
     appKey: process.env.APP_KEY,
     appSecret: process.env.APP_SECRET,
@@ -19,14 +23,37 @@ let IPs = ["149.202.62.219", "149.202.62.97", "51.254.143.249", "51.254.143.43",
 
 let partitions = ["WWWELASTIC"];
 
-ovh.request('GET', "/me" , function (err, data) {
+if (false) ovh.request('GET', "/me", function (err, data) {
     console.log(err || 'Me ' + JSON.stringify(data));
 });
 
-taskStatus(ovh);
-vpsStatus(ovh, VPSs);
-//vpsReinstall(ovh, VPSs);
-//partitionAddAccess(ovh, partitions, IPs);
-//partitionCreate(ovh, partitions);
+program
+    .version('0.1.0')
+    .description('OVH Infrastructure Management')
+    .option('-ts, --ts', 'Task Status')
+    .option('-vs, --vs', 'VPS Status')
+    .option('-vr, --vr', 'VPS Reinstall')
+    .option('-pc, --pc', 'Partition Create')
+    .option('-pa, --pa', 'Partition Add Access')
+    .parse(process.argv);
 
+if (program.ts) {
+    taskStatus(ovh);
+}
+
+if (program.vs) {
+    vpsStatus(ovh, VPSs)
+}
+
+if (program.vr) {
+    vpsReinstall(ovh, VPSs)
+}
+
+if (program.pc) {
+    partitionCreate(ovh, partitions)
+}
+
+if (program.pa) {
+    partitionAddAccess(ovh, partitions, IPs)
+}
 

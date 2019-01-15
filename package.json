@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "dependencies": {
+    "commander": "^2.19.0",
     "ovh": "^2.0.2"
   },
   "devDependencies": {},
