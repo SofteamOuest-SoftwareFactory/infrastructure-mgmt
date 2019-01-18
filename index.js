@@ -10,6 +10,7 @@ var ovh = require('ovh')({
 
 var vpsStatus = require('./vps-status');
 var vpsReinstall = require('./vps-reinstall');
+var vpsReboot = require('./vps-reboot');
 var partitionCreate = require('./partition-create');
 var partitionAddAccess = require('./partition-add-access');
 var taskStatus = require('./task-status');
@@ -33,6 +34,7 @@ program
     .option('-ts, --ts', 'Task Status')
     .option('-vs, --vs', 'VPS Status')
     .option('-vr, --vr', 'VPS Reinstall')
+    .option('-vb, --vb', 'VPS Reboot')
     .option('-pc, --pc', 'Partition Create')
     .option('-pa, --pa', 'Partition Add Access')
     .parse(process.argv);
@@ -47,6 +49,10 @@ if (program.vs) {
 
 if (program.vr) {
     vpsReinstall(ovh, VPSs)
+}
+
+if (program.vb) {
+    vpsReboot(ovh, VPSs)
 }
 
 if (program.pc) {
