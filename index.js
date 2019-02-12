@@ -15,25 +15,27 @@ var partitionCreate = require('./partition-create');
 var partitionAddAccess = require('./partition-add-access');
 var taskStatus = require('./task-status');
 
-
 let VPSs = [
-    "vps242131.ovh.net",
-    "vps242130.ovh.net",
-    "vps257315.ovh.net",
     "vps568063.ovh.net",
-    "vps568065.ovh.net"];
+    "vps568065.ovh.net",
+    "vps643172.ovh.net",
+    "vps646316.ovh.net",
+    "vps646317.ovh.net"];
 
-let IPs = ["149.202.62.97",
-    "149.202.62.219",
-    "51.255.42.138",
-    "51.38.238.172",
-    "51.38.238.181"];
+let IPs = ["51.38.238.172",
+    "51.38.238.181",
+    "51.77.230.244",
+    "51.75.27.187",
+    "51.75.27.194"];
 
 let partitions = ["WWWELASTIC",
     "WWWLOGSTASH",
     "WWWSONARQUBE",
     "WWWJENKINS",
-    "WWWNEXUS"];
+    "WWWNEXUS",
+    "WWWGRAV",
+    "KEYCLOAK", 
+    "K8SBACKUP"];
 
 program
     .version('0.1.0')
